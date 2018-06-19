@@ -5,12 +5,17 @@
 	
 	<target name="build" description="copy" >
 		<echo>----------------------------------------------------------</echo>
-		<echo>jar파일을 copy / build 합니다...</echo>
+		<echo>jar파일을 copy합니다...</echo>
 		<echo>----------------------------------------------------------</echo>
 
 		<copy file="target/${app.name}.jar" todir="/workspace/yongs/build/scheduler" />
+		<echo>----------------------------------------------------------</echo>
+		<echo>scheduler 이미지를 build 합니다...</echo>
+		<echo>----------------------------------------------------------</echo>
+		<!--
 		<exec executable="/bin/bash">
 			<arg value="/workspace/yongs/build/scheduler/build.sh" />
 		</exec>
+		-->
 	</target>	
 </project>
