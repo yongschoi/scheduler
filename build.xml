@@ -9,7 +9,9 @@
 		<echo>----------------------------------------------------------</echo>
 
 		<copy file="target/${app.name}.jar" todir="/workspace/yongs/build/scheduler" />
-		<exec executable="/workspace/yongs/build/scheduler/build.sh" />
+		<exec executable="/bin/sh" failonerror="true">
+		      <arg line="/workspace/yongs/build/scheduler/build.sh" />
+		</exec>
 	</target>	
 
 </project>
