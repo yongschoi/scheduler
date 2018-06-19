@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="scheduler" basedir="." xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+	<description>scheduler</description>
+	<property name="app.name" value="scheduler" />
+	
+	<target name="copy" description="copy" >
+		<echo>----------------------------------------------------------</echo>
+		<echo>jar파일을 copy 합니다...</echo>
+		<echo>----------------------------------------------------------</echo>
+
+		<copy file="target/${app.name}.war" todir="/workspace/yongs/build/scheduler" />				
+	</target>	
+</project>
