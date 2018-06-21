@@ -11,7 +11,7 @@ public class Greeting {
 	public Greeting(String name) {
 		this.name = name;
 	} 
-	
+	 
 	public int getSeq() {
 		return seq;
 	}

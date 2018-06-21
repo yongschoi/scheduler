@@ -13,7 +13,7 @@ public class ActiveStandbyObserver {
 	private static final Logger logger = LoggerFactory.getLogger(ActiveStandbyObserver.class);
 	@Value("${yongs.temp.scheduler}")
 	private String scheduler;
-	
+	  
     @Autowired
     private RabbitTemplate rabbitTemplate;
     

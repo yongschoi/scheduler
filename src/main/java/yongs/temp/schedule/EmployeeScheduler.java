@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import yongs.temp.db.Employee;
 import yongs.temp.db.EmployeeDao;
 import yongs.temp.rabbitmq.ActiveStandbyObserver;
-
+  
 @Component
 public class EmployeeScheduler {
 	private static final Logger logger = LoggerFactory.getLogger(EmployeeScheduler.class);
@@ -32,10 +32,9 @@ public class EmployeeScheduler {
 				if(idx%2==0) gender = "F";
 				else gender = "M";
 				// DB 호출
-				Employee employee = new Employee("BATCH"+idx, gender, "100001", "1", "1", "010-0000-0000", "20000101", "140200", "LGCNS DEVON BATCH");
+				Employee employee = new Employee("BATCH"+idx, gender, "100001", "1", "1", "010-0000-0000", "20000101", "140200", "LGCNS DEVON BATCH"); 
 				employeeDao.createEmployee(employee);
-			}
-			
+			}	 		
 			logger.info(" >>> >>> >>> >>> >>> END Employee business logic ...");
 			
 			///////////////////////////////////////////////////////////////////////

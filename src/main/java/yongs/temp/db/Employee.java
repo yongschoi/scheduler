@@ -11,7 +11,7 @@ public class Employee {
 	private String birthdate;
 	private String postal;
 	private String address;
-
+ 
 	public Employee(int seq, String name, String sex, String departmentCode, String joblevelCode, String skillCode,
 			String telephone, String birthdate, String postal, String address) {
 		this.seq = seq;

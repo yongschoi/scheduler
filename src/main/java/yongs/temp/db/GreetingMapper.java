@@ -13,5 +13,5 @@ public class GreetingMapper implements RowMapper<Greeting> {
         String name = rs.getString("name");
  
         return new Greeting(seq, name);
-    }  
+    }   
 }

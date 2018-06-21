@@ -19,5 +19,5 @@ public class GreetingDao extends JdbcDaoSupport {
                
         Object[] params = new Object[] { greeting.getName() };
         this.getJdbcTemplate().update(create_sql, params);
-    }
+    } 
 }
