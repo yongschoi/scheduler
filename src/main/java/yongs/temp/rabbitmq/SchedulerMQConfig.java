@@ -65,10 +65,8 @@ public class SchedulerMQConfig {
 		// 초기 startup시 active인지 standby 인지 알아야 함.(Listener는 상대방 Queue를 셋팅함)
 		if(scheduler.equals("active")) { 
 			container.setQueueNames("standby");  
-			ActiveStandbyObserver.RUNNING_STATUS = true;
 		} else {
 			container.setQueueNames("active");
-			ActiveStandbyObserver.RUNNING_STATUS = false;
 		}
 	 	
 		container.setMessageListener(listenerAdapter);
