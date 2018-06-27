@@ -35,24 +35,24 @@ public class ActiveStandbyObserver {
 		Long diff = System.currentTimeMillis() - otherTime;
 		logger.debug("<count> " + ActiveStandbyObserver.count.toString());
 		logger.debug("<diff> " + diff.toString());
+				
+		// 상대방 응답이 없고(count == 0) && 30초간 응답이 없으면, 상대방 서버 down
+		if(ActiveStandbyObserver.count == 0 && diff > WAIT_TIME * 1000)
+			ActiveStandbyObserver.RUNNING_STATUS = true;
+		
+		// 상대방 queue가 쌓이면(상대방이 기동중이라는 의미)
+		if(ActiveStandbyObserver.count > 5)
+			ActiveStandbyObserver.RUNNING_STATUS = false;
 		
 		if(ActiveStandbyObserver.RUNNING_STATUS)
 			logger.info("<Running> " + scheduler);
 		else
 			logger.info("<Not Running> " + scheduler);
 		
-		// 상대방 응답이 없고(count == 0) && 30초간 응답이 없으면, 상대방 서버 down
-		if(ActiveStandbyObserver.count == 0 && diff > WAIT_TIME * 1000)
-			ActiveStandbyObserver.RUNNING_STATUS = true;
-		 
-		// 상대방 queue가 쌓이면(상대방이 기동중이라는 의미)
-		if(ActiveStandbyObserver.count > 5)
-			ActiveStandbyObserver.RUNNING_STATUS = false;
-		
+		// count refresh
 		ActiveStandbyObserver.count = 0L;
 	}
 		
-	// 최초 Active 서버가 기동한 후, 최소 3초 후에 Standby 서버를 기동시켜야 한다.
 	@Scheduled(cron = "0/3 * * * * *")
 	public void toSignal() {
 		try {		
