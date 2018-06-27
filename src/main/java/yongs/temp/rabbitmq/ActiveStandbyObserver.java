@@ -33,9 +33,14 @@ public class ActiveStandbyObserver {
 	@Scheduled(cron = "0/5 * * * * *")
 	public void monitor() {
 		Long diff = System.currentTimeMillis() - otherTime;
-		logger.info("<count> " + ActiveStandbyObserver.count.toString());
-		logger.info("<diff> " + diff.toString());
-		 
+		logger.debug("<count> " + ActiveStandbyObserver.count.toString());
+		logger.debug("<diff> " + diff.toString());
+		
+		if(ActiveStandbyObserver.RUNNING_STATUS)
+			logger.info("<Running> " + scheduler);
+		else
+			logger.info("<Not Running> " + scheduler);
+		
 		// 상대방 응답이 없고(count == 0) && 30초간 응답이 없으면, 상대방 서버 down
 		if(ActiveStandbyObserver.count == 0 && diff > WAIT_TIME * 1000)
 			ActiveStandbyObserver.RUNNING_STATUS = true;
