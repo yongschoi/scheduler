@@ -28,7 +28,7 @@ public class SchedulerMQConfig {
 	@Value("${yongs.temp.scheduler}")
 	private String scheduler;
 	
-	static final String directExchangeName = "yongs.direct.exchange";
+	private static final String directExchangeName = "yongs.direct.exchange";
 
 	@Bean
 	@Primary 
@@ -62,7 +62,7 @@ public class SchedulerMQConfig {
 	SimpleMessageListenerContainer container(MessageListenerAdapter listenerAdapter) {
 		SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
 		container.setConnectionFactory(connectionFactory());
-		// 초기 startup시 active인지 standby 인지 알아야 함.(Listener는 상대방 Queue를 셋팅함)
+		// 초기 startup시 active인지 standby인지 알아야 함.(Listener는 상대방 Queue를 셋팅함)
 		if(scheduler.equals("active")) { 
 			container.setQueueNames("standby");  
 		} else {

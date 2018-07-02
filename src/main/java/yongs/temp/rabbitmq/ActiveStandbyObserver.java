@@ -36,7 +36,7 @@ public class ActiveStandbyObserver {
 		logger.debug("<count> " + ActiveStandbyObserver.count.toString());
 		logger.debug("<diff> " + diff.toString());
 				
-		// 상대방 응답이 없고(count == 0) && 30초간 응답이 없으면, 상대방 서버 down
+		// 상대방 응답이 없고(count == 0) && WAIT_TIME(초)동안 응답이 없으면, 상대방 서버 down
 		if(ActiveStandbyObserver.count == 0 && diff > WAIT_TIME * 1000)
 			ActiveStandbyObserver.RUNNING_STATUS = true;
 		
