@@ -17,7 +17,7 @@ public class EmployeeScheduler {
     @Autowired
     private EmployeeDao employeeDao;
      
-	@Scheduled(cron = "0 * * * * *")
+	@Scheduled(cron = "0 0/5 20 * * *")
 	public void onCreateJob() {
 		if (ActiveStandbyObserver.RUNNING_STATUS) {			
 			////////////////////////////////////////////////////////////////////

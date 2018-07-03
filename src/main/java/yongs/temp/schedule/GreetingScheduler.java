@@ -20,7 +20,7 @@ public class GreetingScheduler {
     @Autowired
     private GreetingDao greetingDao;
      
-	@Scheduled(cron = "35 * * * * *")
+	@Scheduled(cron = "0/30 0/5 * * * *")
 	public void onCreateJob() {
 		if (ActiveStandbyObserver.RUNNING_STATUS) {			
 			////////////////////////////////////////////////////////////////////
