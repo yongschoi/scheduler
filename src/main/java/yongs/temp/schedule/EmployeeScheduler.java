@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import yongs.temp.db.Employee;
 import yongs.temp.db.EmployeeDao;
 import yongs.temp.rabbitmq.ActiveStandbyObserver;
-  
+   
 @Component
 public class EmployeeScheduler {
 	private static final Logger logger = LoggerFactory.getLogger(EmployeeScheduler.class);
@@ -30,7 +30,7 @@ public class EmployeeScheduler {
 			for (int idx=0; idx < 2; idx++) {
 				gender = (idx%2==0) ? "F" : "M";
 				// DB 호출
-				Employee employee = new Employee("BATCH"+idx, 
+				Employee employee = new Employee("Spring-BOOT"+idx, 
 												 gender, 
 												 "100001", 
 												 "1", 
